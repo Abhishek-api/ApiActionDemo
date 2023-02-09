@@ -57,4 +57,4 @@ components:
       default: "CA"
 servers:
 - url: http://mocktarget.apigee.net
-  description: Development Server
+  description: Development Ser
