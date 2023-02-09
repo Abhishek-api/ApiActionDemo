@@ -8,7 +8,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-#dwnkd
+
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
