@@ -22,4 +22,4 @@ jobs:
       run: ./inso lint spec pipe1.yml
     - name: Generate kong.yaml
       run: ./inso generate config pipe1.yml --type declarative -o kong.yaml
-    - name: open kong.yaml
+
