@@ -23,6 +23,19 @@ paths:
             schema:
               $ref: "#/components/schemas/mocks"
      operationId: getJSON
+  /xml:
+   get:
+     tags:
+       - XML
+     description: To fetch details of Mock Response
+     responses:
+      "200":
+        description: 200 response
+        content:
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/mockxml"
+     operationId: getXML
 components: 
   schemas:
    mocks:
@@ -57,4 +70,4 @@ components:
       default: "CA"
 servers:
 - url: http://mocktarget.apigee.net
-  description: Development Ser
+  description: Development Server
