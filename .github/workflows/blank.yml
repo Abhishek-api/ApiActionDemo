@@ -21,7 +21,7 @@ jobs:
     - name: Lint OpenAPI Spec
       run: ./inso lint spec pipe1.yml
     - name: Generate kong.yaml
-      run: ./inso generate config mock.yaml --type declarative -o kong.yaml
+      run: ./inso generate config pipe1.yml --type declarative -o kong.yaml
     - name: open kong.yaml
       run: cat /home/runner/work/kong-apiops/kong-apiops/kong.yaml
     - name: install deck CLI
