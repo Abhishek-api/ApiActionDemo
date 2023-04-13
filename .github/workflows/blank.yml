@@ -33,6 +33,6 @@ jobs:
       run: deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file kong.yaml --output-file new-kong.yaml
 
     - name: check
-      run: deck sync -s kong.yaml --tls-skip-verify --kong-addr http://34.125.214.254:8001 
+      run: deck sync -s kong.yaml --tls-skip-verify --kong-addr http://34.125.228.150:8001 
 
 
