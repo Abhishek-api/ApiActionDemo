@@ -39,7 +39,7 @@ jobs:
     
     - name: Check connectivity to CP
       run: |
-          deck ping --kong-addr ${{ secrets.KOND_ADMIN_ADDR }} 
+          deck ping --headers --kong-addr ${{ secrets.KOND_ADMIN_ADDR }} 
     
     - name: Convert kong declartive
       run: |
