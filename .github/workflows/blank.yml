@@ -30,7 +30,7 @@ jobs:
         tar -xf deck.tar.gz -C /tmp 
         sudo cp /tmp/deck /usr/local/bin/
     - name: update
-      run: deck convert --from kong-gateway-2.x --to kong-gateway-3.x--input-file kong.yaml --output-file new-kong.yaml
+      run: deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file kong.yaml --output-file new-kong.yaml
 
     - name: check
       run: deck sync -s kong.yaml --tls-skip-verify --kong-addr http://34.125.66.110:8001 
