@@ -1,4 +1,4 @@
-name: Lint OpenAPI Spec
+name: Kong Deployment on Apiops
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
-      #kd
+      
 
     - name: Install Insomnia CLI
       run: |
@@ -21,19 +21,31 @@ jobs:
 
     - name: Lint OpenAPI Spec
       run: ./inso lint spec pipe1.yml
+    
     - name: Generate kong.yaml
       run: ./inso generate config pipe1.yml --type declarative -o kong.yaml
+    
     - name: open kong.yaml
       run: cat /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml
+    
     - name: install deck CLI
       run: |
         curl -sL https://github.com/kong/deck/releases/download/v1.17.2/deck_1.17.2_linux_amd64.tar.gz -o deck.tar.gz
         tar -xf deck.tar.gz -C /tmp 
         sudo cp /tmp/deck /usr/local/bin/
-    - name: update
-      run: deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file kong.yaml --output-file new-kong.yaml
-
+    
     - name: check
+      run: deck validate -s /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml
+    
+    - name: Check connectivity to CP
+      run: |
+          deck ping --kong-addr ${{ secrets.KOND_ADMIN_ADDR }} --tls-skip-verify
+    
+    - name: Convert kong declartive
+      run: |
+          deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file kong.yaml --output-file new-kong.yaml
+
+    - name: Deploy to Kong
       run: deck sync -s new-kong.yaml --kong-addr http://34.125.228.150:8001 
 
 
