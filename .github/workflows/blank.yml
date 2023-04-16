@@ -1,5 +1,4 @@
-name: Kong Deployment on Apiops
-
+name: Kong Deployment on Apiops with dev-portal
 on:
   push:
     branches:
@@ -43,5 +42,24 @@ jobs:
 
     - name: Deploy to Kong
       run: deck sync -s new-kong.yaml --kong-addr https://34.125.90.13:8444 --tls-skip-verify
+ 
+  publish-cutomer-api-to-portal:
+    name: Publish OAS to dev portal
+    needs: OAS-to-Kong
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+      - uses: actions/checkout@v2
+      - name: Install NodeJs
+      - uses: actions/setup-node@v3
+      - name: Install kon-dev-portal-cli
+      - run: npm install -g kong-portal-cli
 
+
+      - name: Deploy to dev portal
+      - run: |
+           portal deploy -D  --preserve defualt
+      -env:
+         KONG_ADMIN_URL: ${{ secrets.KONG_ADMIN_ADDR }}
+     
 
