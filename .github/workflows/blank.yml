@@ -48,7 +48,7 @@ jobs:
     needs: OAS_To_KONG
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
+      - name: Checkout Code
         uses: actions/checkout@v2
       - name: Install NodeJs
         uses: actions/setup-node@v3
