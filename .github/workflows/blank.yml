@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-#ffd
+
 jobs:
   OAS_To_KONG:
     runs-on: ubuntu-latest
@@ -49,15 +49,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: Install NodeJs
-      - uses: actions/setup-node@v3
+        uses: actions/setup-node@v3
       - name: Install kon-dev-portal-cli
-      - run: npm install -g kong-portal-cli
+        run: npm install -g kong-portal-cli
 
 
       - name: Deploy to dev portal
-      - run: |
+        run: |
            portal deploy -D  --preserve defualt
       - env :
          KONG_ADMIN_URL: ${{ secrets.KONG_ADMIN_ADDR }}
