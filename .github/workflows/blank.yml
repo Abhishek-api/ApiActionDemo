@@ -43,20 +43,4 @@ jobs:
     - name: Deploy to Kong
       run: deck sync -s new-kong.yaml --kong-addr http://34.125.240.32:8001 --tls-skip-verify
  
-  publish-cutomer-api-to-portal:
-    name: Publish OAS to dev portal
-    needs: OAS_To_KONG
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v2
-      - name: Install NodeJs
-        uses: actions/setup-node@v3
-      - name: Install kong-dev-portal-cli
-        run: npm install -g kong-portal-cli
-
-      - name: Deploy to dev portal
-        run: |
-           portal deploy -D  --preserve default
-      - env:
-         KONG_ADMIN_URL: ${{ secrets.KONG_ADMIN_ADDR }}
+ 
