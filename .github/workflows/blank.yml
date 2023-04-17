@@ -43,7 +43,7 @@ jobs:
     - name: Deploy to Kong  # Sync the Kong configuration to Kong API Gateway
       run: deck sync -s new-kong.yaml --kong-addr http://34.125.240.32:8001 --tls-skip-verify
 
-  publish-cutomer-api-to-portal:  # Publish the API to the dev portal
+  publish-customer-api-to-portal:  # Publish the API to the dev portal
     name: Publish OAS to dev portal
     needs: OAS_To_KONG  # Make sure the OAS_To_KONG job is completed before running this job
     runs-on: ubuntu-latest  # Use Ubuntu as the operating system for the job
