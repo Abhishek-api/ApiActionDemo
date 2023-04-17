@@ -52,7 +52,7 @@ jobs:
         run: npm install -g kong-portal-cli
       - name: Deploy to dev portal  # Deploy the API to the dev portal
         run: |
-           portal deploy -D  --preserve defualt
+           portal deploy -D  --preserve default
    
 
    
