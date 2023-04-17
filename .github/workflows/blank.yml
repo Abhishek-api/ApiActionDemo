@@ -1,4 +1,4 @@
-name: Kong Deployment on Apiops with dev-portal  # Specify the name of the deployment
+name: Demo to Delpoy OAS to Kong # Specify the name of the deployment
 
 on:
   push:
@@ -20,13 +20,10 @@ jobs:
 
     - name: Lint OpenAPI Spec  # Lint the OpenAPI spec using Insomnia CLI
       run: ./inso lint spec pipe1.yml
-
     - name: Generate kong.yaml  # Generate Kong configuration in declarative format
       run: ./inso generate config pipe1.yml --type declarative -o kong.yaml
-
     - name: open kong.yaml  # Display the contents of the generated Kong configuration
       run: cat /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml
-
     - name: install deck CLI  # Install deck CLI for syncing Kong configuration
       run: |
         curl -sL https://github.com/kong/deck/releases/download/v1.17.2/deck_1.17.2_linux_amd64.tar.gz -o deck.tar.gz
@@ -42,21 +39,8 @@ jobs:
 
     - name: Deploy to Kong  # Sync the Kong configuration to Kong API Gateway
       run: deck sync -s new-kong.yaml --kong-addr http://34.125.240.32:8001 --tls-skip-verify
-
   publish-customer-api-to-portal:  # Publish the API to the dev portal
     name: Publish OAS to dev portal
     needs: OAS_To_KONG  # Make sure the OAS_To_KONG job is completed before running this job
     runs-on: ubuntu-latest  # Use Ubuntu as the operating system for the job
-    steps:
-      - name: Checkout branch  # Checkout the branch from the repository
-        uses: actions/checkout@v2
-      - name: Install NodeJs  # Install Node.js for running the dev portal CLI
-        uses: actions/setup-node@v3
-      - name: Install kon-dev-portal-cli  # Install dev portal CLI
-        run: npm install -g kong-portal-cli
-
-      - name: Deploy to dev portal  # Deploy the API to the dev portal
-        run: |
-           portal deploy -D  --preserve defualt
-      - env :  # Specify environment variable for the Kong admin URL
-         KONG_ADMIN_URL: ${{ secrets.KONG_ADMIN_ADDR }}  
+    
