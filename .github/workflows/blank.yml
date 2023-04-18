@@ -53,6 +53,10 @@ jobs:
       - name: Deploy to dev portal  # Deploy the API to the dev portal
         run: |
            portal deploy -D  --preserve default
+           
+      - env : | # Specify environment variable for the Kong admin URL
+           KONG_ADMIN_URL: ${{ secrets.KONG_ADMIN_ADDR }}  
+
    
 
    
