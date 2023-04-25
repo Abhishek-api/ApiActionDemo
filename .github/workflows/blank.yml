@@ -21,7 +21,8 @@ jobs:
     - name: Lint OpenAPI Spec  # Lint the OpenAPI spec using Insomnia CLI
       run: ./inso lint spec pipe1.yml
     - name: Generate kong.yaml  # Generate Kong configuration in declarative format
-      run: ./inso generate config pipe1.yml --type declarative -o kong.yaml
+      run: ./inso generate config pipe1.yml --type declarative -o kong.yaml --kongVersion 3.1.0
+
     - name: open kong.yaml  # Display the contents of the generated Kong configuration
       run: cat /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml
     - name: install deck CLI  # Install deck CLI for syncing Kong configuration
@@ -33,9 +34,9 @@ jobs:
     - name: check  # Validate the Kong configuration using deck CLI
       run: deck validate -s /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml
 
-    - name: Convert kong declarative  # Convert the Kong configuration to version 3.x using deck CLI
-      run: |
-          deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file kong.yaml --output-file new-kong.yaml
+#     - name: Convert kong declarative  # Convert the Kong configuration to version 3.x using deck CLI
+#       run: |
+#           deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file kong.yaml --output-file new-kong.yaml
 
     - name: Deploy to Kong  # Sync the Kong configuration to Kong API Gateway
       run: deck sync -s new-kong.yaml --kong-addr https://34.125.189.191:8444 --tls-skip-verify
