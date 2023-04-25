@@ -21,7 +21,10 @@ jobs:
     - name: Lint OpenAPI Spec  # Lint the OpenAPI spec using Insomnia CLI
       run: ./inso lint spec pipe1.yml
     - name: Generate kong.yaml  # Generate Kong configuration in declarative format
-      run: ./inso generate config pipe1.yml --type declarative -o kong.yaml --kongVersion 3.1.0
+      run: ./inso generate config pipe1.yml --type declarative -o kong.yaml 
+    
+    - name: Convert kong version
+      run: ./inso convert config kong.yaml --output kong2.yaml --kongVersion 3.1.0
 
     - name: open kong.yaml  # Display the contents of the generated Kong configuration
       run: cat /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml
