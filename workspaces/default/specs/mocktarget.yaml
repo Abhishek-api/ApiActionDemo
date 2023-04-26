@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: httpbin
+  title: Mock Api
   description: API Management facade for a very handy and free online HTTP tool.
   version: "1.0"
   x-kubernetes-ingress-metadata:
