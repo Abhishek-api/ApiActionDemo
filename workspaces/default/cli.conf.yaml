@@ -1,4 +1,4 @@
 # Kong Admin URL
 # @required
-kong_admin_url: http://localhost:8002
+# kong_admin_url: http://localhost:8002
 
