@@ -52,6 +52,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Install NodeJs  # Install Node.js for running the dev portal CLI
         uses: actions/setup-node@v3
+        with: |
+           node-version: '16.x'
+           
       - name: Install kon-dev-portal-cli  # Install dev portal CLI
         run: npm install -g kong-portal-cli
       - name: Deploy to dev portal
