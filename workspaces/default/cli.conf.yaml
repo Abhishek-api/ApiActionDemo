@@ -1,4 +1,4 @@
 # Kong Admin URL
 # @required
-kong_admin_url: https://34.125.74.21:8445/default/
+kong_admin_url:
 
