@@ -34,13 +34,6 @@ pipeline{
                 sh 'deck validate -s new-kong.yaml'
             }
         }
-        //Convert the Kong configuration to version 3.x using deck CLI
-        stage('Convert kong declarative') {
-            steps {
-                
-                sh 'yes | deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file new-kong.yaml --output-file new1-kong.yaml'
-            }
-        } 
          stage('open new1-kong.yaml') {
             steps {
                 sh 'cat new1-kong.yaml'
