@@ -23,15 +23,13 @@ pipeline{
         //Validate the Kong configuration using deck CLI
         stage('Validate the Kong configuration using deck CLI') {
             steps {
-                echo "$KONG_CONFIG"
                 sh 'deck validate -s kong.yaml'
             }
         }
         //Convert the Kong configuration to version 3.x using deck CLI
         stage('Convert kong declarative') {
             steps {
-                
-                sh 'yes | deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file kong.yaml --output-file new-kong.yaml'
+                sh 'deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file kong.yaml --output-file new-kong.yaml'
             }
         } 
         //Deploy to Kong
