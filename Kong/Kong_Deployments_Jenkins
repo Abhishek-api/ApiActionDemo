@@ -5,8 +5,9 @@ pipeline{
         //Checkout Git Repo
         stage('Checkout') {
             steps {
-                git  url: 'https://github.com/Abhishek-api/ApiActionDemo'
+               sh 'echo Hello'
             }
+            
         }
         //Lint the OpenAPI spec using Insomnia CLI
         stage('Lint OpenAPI Spec') {
