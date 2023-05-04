@@ -5,13 +5,13 @@ pipeline{
         //Checkout Git Repo
         stage('Checkout') {
             steps {
-                git  url: 'https://github.com/rk23597/ApiOps.git'
+                git  url: 'https://github.com/Abhishek-api/ApiActionDemo'
             }
         }
         //Lint the OpenAPI spec using Insomnia CLI
         stage('Deploy to dev portal') {
             steps {
-                sh ' KONG_ADMIN_URL=http://34.125.114.21:8001 portal deploy --preserve default -D '
+                sh ' KONG_ADMIN_URL=https://34.125.74.21:8445 portal deploy --preserve default -D '
             }
         }
    }
