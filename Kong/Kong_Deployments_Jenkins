@@ -46,7 +46,7 @@ pipeline{
            deleteDir()
        }
     }
-}
+
         //Validate the Kong configuration using deck CLI
         stage('Validate the Kong configuration using deck CLI') {
             steps {
