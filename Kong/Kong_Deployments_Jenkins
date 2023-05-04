@@ -34,14 +34,15 @@ pipeline{
                 sh 'deck validate -s new-kong.yaml'
             }
         }
-         stage('open new1-kong.yaml') {
-            steps {
-                sh 'cat new-kong.yaml'
-            }
-        }
+        
          stage('Convert Kong Version') {
             steps {
                 sh 'deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file new-kong.yaml --output-file new-kong3.yaml'
+            }
+        }
+        stage('open new-kong3.yaml') {
+            steps {
+                sh 'cat new-kong3.yaml'
             }
         }
    
