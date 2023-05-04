@@ -41,6 +41,11 @@ pipeline{
                 sh 'yes | deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file new-kong.yaml --output-file new1-kong.yaml'
             }
         } 
+         stage('open kong.yaml') {
+            steps {
+                sh 'cat new1-kong.yaml'
+            }
+        }
         //Deploy to Kong
         stage('Deploy to Kong') {
             steps {
