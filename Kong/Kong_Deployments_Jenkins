@@ -5,14 +5,14 @@ pipeline{
         //Checkout Git Repo
         stage('Checkout') {
             steps {
-               sh 'echo Hello'
+               sh 'pwd'
             }
             
         }
         //Lint the OpenAPI spec using Insomnia CLI
         stage('Lint OpenAPI Spec') {
             steps {
-                sh 'cd /home/abhishek && ./inso --version'
+                sh 'sudo cd /home/abhishek && ./inso --version'
             }
         }
         //Generate Kong configuration in declarative format
