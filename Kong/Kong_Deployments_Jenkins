@@ -27,7 +27,26 @@ pipeline{
                 sh 'cat new-kong.yaml'
             }
         }
- 
+  stages {
+        //Checkout Git Repo
+        stage('Checkout') {
+            steps {
+                git  url: 'https://github.com/Abhishek-api/ApiActionDemo'
+            }
+        }
+        //Lint the OpenAPI spec using Insomnia CLI
+        stage('Deploy to dev portal') {
+            steps {
+                sh ' KONG_ADMIN_URL=https://34.125.74.21:8445 portal deploy --preserve default -D '
+            }
+        }
+   }
+   post {
+        always {
+           deleteDir()
+       }
+    }
+}
         //Validate the Kong configuration using deck CLI
         stage('Validate the Kong configuration using deck CLI') {
             steps {
