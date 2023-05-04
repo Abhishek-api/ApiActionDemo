@@ -1,4 +1,5 @@
 pipeline{  
+ agent any
    stages {
         //Lint the OpenAPI spec using Insomnia CLI
         stage('Lint OpenAPI Spec') {
