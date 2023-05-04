@@ -12,13 +12,13 @@ pipeline{
         //Lint the OpenAPI spec using Insomnia CLI
         stage('Lint OpenAPI Spec') {
             steps {
-                sh '/usr/local/bin/inso lint spec pipe1.yml'
+                sh 'inso lint spec pipe1.yml'
             }
         }
         //Generate Kong configuration in declarative format
         stage('Generate Kong configuration in declarative format') {
             steps {
-                sh '/usr/local/bin/ generate config pipe1.yaml --type declarative -o new-kong.yaml'
+                sh 'inso generate config pipe1.yaml --type declarative -o new-kong.yaml'
             }
         }
         //Display the contents of the generated Kong configuration
