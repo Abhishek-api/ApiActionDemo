@@ -12,7 +12,7 @@ pipeline{
         //Lint the OpenAPI spec using Insomnia CLI
         stage('Lint OpenAPI Spec') {
             steps {
-                sh './inso --version'
+                sh 'cd /home/abhishek && ./inso --version'
             }
         }
         //Generate Kong configuration in declarative format
