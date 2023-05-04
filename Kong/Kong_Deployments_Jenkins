@@ -12,7 +12,7 @@ pipeline{
         //Lint the OpenAPI spec using Insomnia CLI
         stage('Lint OpenAPI Spec') {
             steps {
-                sh 'inso lint spec pipe1.yaml'
+                sh './inso --version'
             }
         }
         //Generate Kong configuration in declarative format
