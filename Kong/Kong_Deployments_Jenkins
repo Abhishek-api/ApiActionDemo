@@ -18,7 +18,7 @@ pipeline{
         //Generate Kong configuration in declarative format
         stage('Generate Kong configuration in declarative format') {
             steps {
-                sh 'inso generate config pipe1.yaml --type declarative -o new-kong.yaml'
+                sh 'inso generate config pipe1.yml --type declarative -o new-kong.yaml'
             }
         }
         //Display the contents of the generated Kong configuration
