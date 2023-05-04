@@ -46,35 +46,4 @@ pipeline{
            deleteDir()
        }
     }
-
-        //Validate the Kong configuration using deck CLI
-        stage('Validate the Kong configuration using deck CLI') {
-            steps {
-                sh 'deck validate -s new-kong.yaml'
-            }
-        }
-        
-         stage('Convert Kong Version') {
-            steps {
-                sh 'deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file new-kong.yaml --output-file new-kong3.yaml'
-            }
-        }
-        stage('open new-kong3.yaml') {
-            steps {
-                sh 'cat new-kong3.yaml'
-            }
-        }
-   
-        //Deploy to Kong
-        stage('Deploy to Kong') {
-            steps {
-                sh 'deck sync -s new-kong3.yaml --kong-addr https://34.125.74.21:8444 --tls-skip-verify'
-            }
-        }
-   }
-   post {
-        always {
-           deleteDir()
-       }
-    }
 }
