@@ -34,11 +34,18 @@ jobs:
         tar -xf deck.tar.gz -C /tmp 
         sudo cp /tmp/deck /usr/local/bin/
 
-    - name: check  # Validate the Kong configuration using deck CLI
-      run: deck validate -s /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml
     - name: Deck dump
       run: deck dump -o a.yaml --headers "kong-admin-token:${{ secrets.KONG_ADMIN_TOKEN}}" --kong-addr ${{ secrets.KONG_ADMIN_ADDR }} --tls-skip-verify
+  
+    - name: open a.yaml  # Display the contents of the generated Kong configuration
+      run: cat /home/runner/work/ApiActionDemo/ApiActionDemo/a.yaml
 
+    - name: check a # Validate the Kong configuration using deck CLI
+      run: deck validate -s /home/runner/work/ApiActionDemo/ApiActionDemo/a.yaml
+    
+    - name: check  # Validate the Kong configuration using deck CLI
+      run: deck validate -s /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml
+  
 #     - name: Convert kong declarative  # Convert the Kong configuration to version 3.x using deck CLI
 #       run: |
 #           deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file kong.yaml --output-file new-kong.yaml
