@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   title: My Mock Target APIs
   contact:
-    email: mockmail@gmail.com #il;;;
+    email: mock@gmail.com #il;;;
     name: vinod
 tags:
   - name: JSON
@@ -14,7 +14,7 @@ paths:
    get:
      tags:
        - JSON
-     description: To fetch details of Mock Response
+     description: To fetch details of 
      responses:
       "200":
         description: 200 response
