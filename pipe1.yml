@@ -1,188 +1,128 @@
 openapi: 3.0.0
 info:
-  title: httpbin
-  description: API Management facade for a very handy and free online HTTP tool.
-  version: '1.0'
-  x-kubernetes-ingress-metadata:
-    annotations:
-      konghq.com/strip-path: 'true'
-paths:
-  '/status/{code}':
-    get:
-      description: Returns provided HTTP Status code.
-      operationId: /status
-      parameters:
-        - name: code
-          in: path
-          description: HTTP code to return.
-          required: true
-          schema:
-            type: number
-            enum:
-              - 200
-            default: 200
-      responses: {}
-  /get:
-    get:
-      description: Returns GET data.
-      operationId: /get
-      responses: {}
-  /post:
-    post:
-      description: Returns POST data.
-      operationId: /post
-      responses: {}
-  /patch:
-    patch:
-      description: Returns PATCH data.
-      operationId: /patch
-      responses: {}
-  /put:
-    put:
-      description: Returns PUT data.
-      operationId: /put
-      responses: {}
-  /delete:
-    delete:
-      description: Returns DELETE data.
-      operationId: /delete
-      responses: {}
-  /xml:
-    get:
-      description: Returns some XML.
-      operationId: /xml
-      responses: {}
-  /ip:
-    get:
-      description: Returns origin IP.
-      operationId: /ip
-      responses: {}
-  /user-agent:
-    get:
-      description: Returns user agent string.
-      operationId: /user-agent
-      responses: {}
-  /headers:
-    get:
-      description: Returns headers dictionary.
-      operationId: /headers
-      responses: {}
-  '/delay/{seconds}':
-    get:
-      description: Delays responding for n–10 seconds.
-      operationId: /delay
-      parameters:
-        - name: seconds
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-            enum:
-              - 2
-            default: 2
-      responses: {}
-  '/cache/{maxAge}':
-    get:
-      operationId: /cache
-      description: Sets a Cache-Control header for n seconds.
-      parameters:
-        - name: maxAge
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-            enum:
-              - 10
-            default: 10
-      responses: {}
-  /uuid:
-    get:
-      operationId: /uuid
-      description: Returns UUID4.
-      responses: {}
-  /anything:
-    get:
-      operationId: /anything
-      description: 'Returns request data, including method used.'
-      responses: {}
-  /gzip:
-    get:
-      operationId: /gzip
-      description: Returns gzip-encoded data.
-      responses: {}
-  '/base64/{value}':
-    get:
-      operationId: /base64
-      description: Decodes base64url-encoded string.
-      parameters:
-        - name: value
-          in: path
-          description: Base64 encoded string.
-          required: true
-          schema:
-            type: string
-            default: aGVsbG8gd29ybGQNCg%3D%3D
-      responses: {}
-  /deflate:
-    get:
-      operationId: /deflate
-      description: Returns deflate-encoded data.
-      responses: {}
-  /brotli:
-    get:
-      operationId: /brotli
-      description: Returns brotli-encoded data.
-      responses: {}
-  /response-headers:
-    get:
-      operationId: /response-headers
-      description: Returns key-value query parameters as response headers.
-      responses: {}
-  '/bytes/{number}':
-    get:
-      operationId: /bytes
-      description: Generates n random bytes of binary data
-      parameters:
-        - name: number
-          in: path
-          description: Number of bytes to return.
-          required: true
-          schema:
-            type: string
-            default: '1024'
-      responses: {}
-  /redirect-to:
-    get:
-      operationId: /redirect-to
-      description: 302 redirects to a URL provided in query
-      parameters:
-        - name: url
-          in: query
-          description: Redirect target
-          required: true
-          schema:
-            type: string
-            default: 'http://example.com'
-      responses: {}
-  '/stream/{number}':
-    get:
-      operationId: /stream
-      description: 'Streams min(number, 100) lines.'
-      parameters:
-        - name: number
-          in: path
-          description: Number of lines to stream.
-          required: true
-          schema:
-            type: number
-            default: '10'
-      responses: {}
+  version: 1.0.0
+  title: Pizza Order API
+  license:
+    name: Apache 2.0
+  description: Pizza ordering API Demo for today
+  contact:
+    name: Kong
 servers:
-  - url: 'http://httpbin.org'
-    x-kubernetes-backend:
-      serviceName: proxy-to-httpbin
-  - url: 'https://httpbin.org'
-    x-kubernetes-backend:
-      serviceName: proxy-to-httpbin
+  - url: 'http://mockbin.org/request'
+    description: mockbin
+paths:
+  '/v1/order/{id}':
+    get:
+      summary: Fetches an order
+      tags:
+        - order
+      x-kong-plugin-mocking:
+        enabled: true
+        config:
+          api_specification_filename: orders.yaml
+      responses:
+        '200':
+          description: Order object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+              examples:
+                response:
+                  value:
+                    id: '1'
+                    name: Joe Johnson
+                    address: 123 W. Division St.
+                    address2: Apt 20E
+                    city: Chicago
+                    pizzas:
+                      - description: 'Large, all pepperoni, mushroom. Half onion'
+                        size: L
+                        toppings:
+                          - side: B
+                            code: P
+                          - side: B
+                            code: M
+                          - side: R
+                            code: O
+                          - side: R
+                            code: S
+                      - description: 'Small, all mushroom and spinach'
+                        size: S
+                        toppings:
+                          - side: B
+                            code: M
+                          - side: B
+                            code: SP
+      description: Fetch an order
+      parameters:
+        - schema:
+            type: string
+            default: '123'
+          name: id
+          in: path
+          required: true
+          description: This is the order id
+          example: '123'
+components:
+  schemas:
+    Topping:
+      properties:
+        side:
+          type: string
+          enum:
+            - L
+            - R
+            - B
+        code:
+          type: string
+          enum:
+            - P
+            - S
+            - SP
+            - M
+            - O
+            - GP
+    Pizza:
+      properties:
+        description:
+          type: string
+        size:
+          type: string
+          enum:
+            - S
+            - M
+            - L
+            - XL
+        toppings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Topping'
+    Pizzas:
+      type: array
+      items:
+        $ref: '#/components/schemas/Pizza'
+    Order:
+      required:
+        - id
+        - name
+        - address
+        - city
+        - pizzas
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        pizzas:
+          type: Pizzas
+    Orders:
+      type: array
+      items:
+        $ref: '#/components/schemas/Order'
