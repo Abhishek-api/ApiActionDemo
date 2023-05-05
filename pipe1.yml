@@ -69,5 +69,5 @@ components:
       type: string 
       default: "CA"
 servers:
-- url: http://mocktarget.apigee.net
+- url: http://httpbin.org/get
   description: Development Server
