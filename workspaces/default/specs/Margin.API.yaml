@@ -7,7 +7,7 @@ info:
     email: menaheme@tase.co.il
   version: v1
 servers:
-  - url: https://mocktarget.apigee.net/json
+  - url: https://httpbin.org
     description: Development server
 paths:
   /MarginsCalculator/LCRMReport:
