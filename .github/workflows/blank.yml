@@ -35,10 +35,10 @@ jobs:
         sudo cp /tmp/deck /usr/local/bin/
 
     - name: Deck dump
-      run: deck dump -o a.yaml --headers "kong-admin-token:${{ secrets.KONG_ADMIN_TOKEN}}" --kong-addr ${{ secrets.KONG_ADMIN_ADDR }} --workspace sandbox --tls-skip-verify
+      run: deck dump -o a.yaml --headers "kong-admin-token:${{ secrets.KONG_ADMIN_TOKEN}}" --kong-addr ${{ secrets.KONG_ADMIN_ADDR }} --workspace 'sandbox' --tls-skip-verify
       
     - name: check  # Validate the Kong configuration using deck CLI
-      run: deck validate -s /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml
+      run: deck validate -s /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml  --workspace 'sanbox'       
   
 #     - name: Convert kong declarative  # Convert the Kong configuration to version 3.x using deck CLI
 #       run: |
