@@ -24,7 +24,7 @@ jobs:
     - name: Installing inso
       run:  npm install -g insomnia
     - name: Run Unit Tests
-      run: ./inso run test --ci --src .pipe1.yml > output.txt   
+      run: ./inso run test --ci --src pipe1.yml    
       
    
 #     - name: Run Tes the spec
