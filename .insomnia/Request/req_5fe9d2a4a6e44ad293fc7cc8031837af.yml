@@ -1,0 +1,54 @@
+_id: req_5fe9d2a4a6e44ad293fc7cc8031837af
+type: Request
+parentId: wrk_7925c390756941fba393032b2b2edaae
+modified: 1683630545806
+created: 1683630524129
+url: https://httpbin.org/MarginsCalculator/LCRMReport
+name: Caculates margin requirement for specifeid members, using specified
+  scneario array parameters.
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "date": "string",
+      "exportToBI": true,
+      "memberList": [
+        {
+          "memberNumber": 0,
+          "calculationParameters": [
+            {
+              "assetCode": 0,
+              "assetValue": 0,
+              "volatility": 0,
+              "fluctuation": 0,
+              "assetInterestRate": 0,
+              "interestRate": 0,
+              "scenarioParameters": [
+                {
+                  "scenarioCode": 0,
+                  "offsetMode": 0,
+                  "scanRange": 0,
+                  "alternateFluctuation": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+parameters: []
+headers: []
+authentication:
+  type: basic
+  username: "{{ _.httpUsername }}"
+  password: "{{ _.httpPassword }}"
+metaSortKey: -1683630524129
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
