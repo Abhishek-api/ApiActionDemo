@@ -23,8 +23,6 @@ jobs:
       uses: actions/setup-node@v1
     - name: Installing inso
       run:  npm install -g insomnia
-    - name: Build Code
-      run: npm run build
     - name: Run Unit Tests
       run: ./inso run test -e test -p pipe1.yml
    
