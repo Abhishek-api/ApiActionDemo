@@ -1,0 +1,21 @@
+_id: req_e61beabe73bf44fea2c08e862feebe73
+type: Request
+parentId: wrk_a41380b5bcef44679fa0945974f4ed2a
+modified: 1683797235649
+created: 1683797070272
+url: "{{ _.base_url }}/get"
+name: Get request endpoint
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1683797070272
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
