@@ -1,11 +1,11 @@
-# extends: spectral:oas
-# rules:
-#   property-names:
-#      message: "Invalid property name: {{value}} (expected: lowercase with underscores)"
-#      recommended: true
-#      severity: warn
-#      given: "$.paths.*.*.parameters.*.name"
-#      then:
-#        function: pattern
-#        functionOptions:
-#          match: "^[a-z_]+$" 
+extends: spectral:oas
+rules:
+  tag-description:
+    description: Please provide a description for each tag.
+    documentationUrl: https://www.example.com/docs/tag-description.md
+    recommended: true
+    severity: error
+    given: $.tags[*]
+    then:
+      field: description
+      function: truthy
