@@ -25,8 +25,10 @@ jobs:
       
     - name: Lint OpenAPI Spec  # Lint the OpenAPI spec using Insomnia CLI
       run: |
-           ./inso lint spec "ApiActionDemo"
-           ./inso lint spec pipe1.yml
+        ./inso lint spec "ApiActionDemo"
+        ./inso lint spec pipe1.yml
+        echo "Hello"
+   
       
     - name: Test the Inso OpenApSpec
       run: ./inso run test "ApiActionDemo" --env "New Environment" --verbose
