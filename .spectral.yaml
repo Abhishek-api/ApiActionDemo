@@ -1,13 +1,13 @@
 extends: spectral:oas
-# rules:
-#   tag-description:
-#     description: Please provide a description for each tag.
-#     documentationUrl: https://www.example.com/docs/tag-description.md
-#     recommended: true
-#     given: $.tags[*]
-#     then:
-#       field: description
-#       function: truthy
+rules:
+  tag-description:
+    description: Please provide a description for each tag.
+    documentationUrl: https://www.example.com/docs/tag-description.md
+    error: true
+    given: $.tags[*]
+    then:
+      field: description
+      function: truthy
 # rules:
 #   adidas-paths-kebab-case:
 #     description: All endpoints/paths MUST follow kebab-case
@@ -17,28 +17,23 @@ extends: spectral:oas
 #       function: pattern
 #       functionOptions:
 #         match: "^\/([a-z0-9]+(-[a-z0-9]+))?(\/[a-z0-9]+(-[a-z0-9]+)|\/{.+})*$
-rules:
-  operation-description: false
-  operation-tags: false
-  operation-operationId: "error"
-  operation-operationId-unique: "error"
-  response-property-names:
-    severity: warn
-    message: "Invalid response property name: {{property}} (expected: lowercase with underscores)"
-    recommended: true
-    given: "$..components.schemas.*.properties[*]~"
-    then:
-      function: pattern
-      functionOptions:
-        match: "^[a-z_]+$"
+# rules:
+#   operation-operationId: "error"
+#   operation-operationId-unique: "error"
+#    # Order for endpoints should bet GET, POST, PATCH, PUT, DELETE
+#   endpoint-verb-order:
+#     severity: error
+#     given: $.paths[?(@.get || @.post || @.patch || @.put || @.delete)]
+#     then:
+#       function: operationOrdering
   
-except:
-  # VGIS Exceptions - We don't know what the example should look like
-  "definitions/vonage-business-cloud/vgis.yml#/components/schemas/Event":
-    - required-property-example
-  "definitions/vonage-business-cloud/vgis.yml#/components/schemas/Call":
-    - required-property-example
-  "definitions/vonage-business-cloud/vgis.yml#/components/schemas/CallCreate":
-    - required-property-example
-  "definitions/vonage-business-cloud/vgis.yml#/components/schemas/CallTransfer":
-    - required-property-example
+# except:
+#   # VGIS Exceptions - We don't know what the example should look like
+#   "definitions/vonage-business-cloud/vgis.yml#/components/schemas/Event":
+#     - required-property-example
+#   "definitions/vonage-business-cloud/vgis.yml#/components/schemas/Call":
+#     - required-property-example
+#   "definitions/vonage-business-cloud/vgis.yml#/components/schemas/CallCreate":
+#     - required-property-example
+#   "definitions/vonage-business-cloud/vgis.yml#/components/schemas/CallTransfer":
+#     - required-property-example
