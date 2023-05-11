@@ -24,7 +24,7 @@ jobs:
       run:  npm install -g insomnia
       
     - name: Lint OpenAPI Spec  # Lint the OpenAPI spec using Insomnia CLI
-      run: inso lint --path definitions/*.yml --fix
+      run: inso lint spec definitions/*.yml 
            
       
 #     - name: Test the Inso OpenApSpec
