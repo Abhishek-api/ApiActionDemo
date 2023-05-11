@@ -30,7 +30,7 @@ jobs:
    
       
     - name: Test the Inso OpenApSpec
-      run: ./inso run test "ApiActionDemo" --env "" --verbose
+      run: ./inso run test "ApiActionDemo" --env "OpenApiEnv" --verbose
       
     - name: Generate kong.yaml  # Generate Kong configuration in declarative format
       run: ./inso generate config "ApiActionDemo" --type declarative -o kong.yaml --kongVersion 3
