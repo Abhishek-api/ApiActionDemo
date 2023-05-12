@@ -7,7 +7,9 @@ on:
 jobs:
   OAS_To_KONG:
     runs-on: ubuntu-latest  # Use Ubuntu as the operating system for the job
-
+   
+    env:
+      FOLDER_PATH: "definitions"
     steps:
     - name: Checkout Code  # Checkout the code from the repository
       uses: actions/checkout@v2
@@ -23,9 +25,12 @@ jobs:
     - name: Installing inso
       run:  npm install -g insomnia
       
-    - name: Lint OpenAPI Spec  # Lint the OpenAPI spec using Insomnia CLI
-#       run:  ./inso lint spec ./definitions/*.yaml 
-      run:  ./inso lint spec httpbin.yaml 
+    - name: Lint OpenAPI Spec
+      run: |
+         for file_path in $FOLDER_PATH/*
+         do
+           inso lint spec ./$file_path
+         done
 
            
       
