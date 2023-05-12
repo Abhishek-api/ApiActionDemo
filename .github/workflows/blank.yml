@@ -67,18 +67,6 @@ jobs:
             deck validate -s ./$file_path
           done
   
-  
-
-    - name: Deck dump
-      run: |
-         state=""
-         for file_path in $FOLDER_PATH/*
-         do
-           state="$state -o $file_path "
-         done  
-         deck dump $state --kong-addr http://34.125.43.26:8001 --workspace ${{ matrix.workspace }}
-  
-  
 # #     - name: Convert kong declarative  # Convert the Kong configuration to version 3.x using deck CLI
 # #       run: |
 # #           deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file kong.yaml --output-file new-kong.yaml
