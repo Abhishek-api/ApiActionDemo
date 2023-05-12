@@ -41,7 +41,7 @@ jobs:
       run: |
          for file_path in $FOLDER_PATH/*
          do
-           ./inso generate config $file_path --type declarative -o $file_path
+           ./inso generate config $file_path --type declarative -o $file_path --kongVersion 3
          done
 #     - name: open kong.yaml  # Display the contents of the generated Kong configuration
 #       run: cat ./$file_path
@@ -64,7 +64,14 @@ jobs:
 # #     - name: Convert kong declarative  # Convert the Kong configuration to version 3.x using deck CLI
 # #       run: |
 # #           deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file kong.yaml --output-file new-kong.yaml
-
+    - name: Deploy to Kong
+      run: |
+         state=""
+         for file_path in $FOLDER_PATH/*
+         do
+           state="$state -s $file_path "
+         done
+         deck sync $state --kong-addr http://34.125.43.26:8001 
 #     - name: Deploy to Kong  # Sync the Kong configuration to Kong API Gateway
 #       run: deck sync -s kong.yaml  --kong-addr http://34.125.43.26:8001
 # #   publish-customer-api-to-portal:  # Publish the API to the dev portal
