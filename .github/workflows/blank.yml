@@ -43,19 +43,19 @@ jobs:
          do
            ./inso generate config $file_path --type declarative -o $file_path
          done
-#     - name: open kong.yaml  # Display the contents of the generated Kong configuration
-#       run: cat /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml
-#     - name: install deck CLI  # Install deck CLI for syncing Kong configuration
-#       run: |
-#         curl -sL https://github.com/kong/deck/releases/download/v1.17.2/deck_1.17.2_linux_amd64.tar.gz -o deck.tar.gz
-#         tar -xf deck.tar.gz -C /tmp 
-#         sudo cp /tmp/deck /usr/local/bin/
+    - name: open kong.yaml  # Display the contents of the generated Kong configuration
+      run: cat /home/runner/work/ApiActionDemo/ApiActionDemo/./$file_path
+    - name: install deck CLI  # Install deck CLI for syncing Kong configuration
+      run: |
+        curl -sL https://github.com/kong/deck/releases/download/v1.17.2/deck_1.17.2_linux_amd64.tar.gz -o deck.tar.gz
+        tar -xf deck.tar.gz -C /tmp 
+        sudo cp /tmp/deck /usr/local/bin/
 
 # #     - name: Deck dump
 # #       run: deck dump -o a.yaml --kong-addr http://34.125.43.26:8002 
       
-#     - name: check  # Validate the Kong configuration using deck CLI
-#       run: deck validate -s /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml 
+    - name: check  # Validate the Kong configuration using deck CLI
+      run: deck validate -s /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml 
   
 # #     - name: Convert kong declarative  # Convert the Kong configuration to version 3.x using deck CLI
 # #       run: |
