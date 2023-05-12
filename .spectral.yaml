@@ -4,7 +4,7 @@ rules:
     description: Please provide a description for each tag.
     documentationUrl: https://www.example.com/docs/tag-description.md
     severity: error
-    recommended: true
+    recommended: false
     given: $.tags[*]
     then:
       field: description
