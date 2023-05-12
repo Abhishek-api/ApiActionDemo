@@ -37,9 +37,12 @@ jobs:
 #     - name: Test the Inso OpenApSpec
 #       run: ./inso run test "ApiActionDemo"
       
-#     - name: Generate kong.yaml  # Generate Kong configuration in declarative format
-#       run: ./inso generate config "ApiActionDemo" --type declarative -o kong.yaml --kongVersion 3
-
+    - name: Generate Kong configuration in declarative format
+      run: |
+         for file_path in $FOLDER_PATH/*
+         do
+           inso generate config ./$file_path --type declarative -o ./$file_path
+         done
 #     - name: open kong.yaml  # Display the contents of the generated Kong configuration
 #       run: cat /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml
 #     - name: install deck CLI  # Install deck CLI for syncing Kong configuration
