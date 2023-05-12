@@ -3,8 +3,8 @@ rules:
   tag-description:
     description: Please provide a description for each tag.
     documentationUrl: https://www.example.com/docs/tag-description.md
-    recommended: true
     severity: error
+    recommended: true
     given: $.tags[*]
     then:
       field: description
