@@ -1,19 +1,21 @@
 extends: spectral:oas
+formats: [oas3]
 rules:
-  open-api-version-3:
-    description: APIs should support OpenAPI V3
-    given: $.openapi
+  info-contact:
     severity: error
-    then:
-      function: pattern
-      functionOptions:
-        match: '^3'
-  snake-case-for-paths:
-    description: Paths must use snake_case
-    given: $.paths
+    message: Info object must have "contact" object.
+  info-description:
     severity: error
-    then:
-      field: '@key'
-      function: pattern
-      functionOptions:
-        match: '^[a-z_\/{}]*$'
+    message: Info "description" must be present and non-empty string.
+  operation-description:
+    severity: error
+    message: Operation "description" must be present and non-empty string.
+  operation-operationId:
+    severity: error
+    message: Operation must have "operationId".
+  operation-tags:
+    severity: error
+    message: Operation must have non-empty "tags" array.
+  operation-operationId-valid-in-url:
+    severity: error
+    message: operationId must not contain characters that are invalid when used in a URL.
