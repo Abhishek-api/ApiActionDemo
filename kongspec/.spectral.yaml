@@ -1,0 +1,19 @@
+extends: spectral:oas
+rules:
+  open-api-version-3:
+    description: APIs should support OpenAPI V3
+    given: $.openapi
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: '^3'
+  snake-case-for-paths:
+    description: Paths must use snake_case
+    given: $.paths
+    severity: error
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: '^[a-z_\/{}]*$'
