@@ -41,7 +41,7 @@ jobs:
       run: |
          for file_path in $FOLDER_PATH/*
          do
-           echo ./$file_path
+           ./inso generate config $file_path --type declarative -o $file_path
          done
 #     - name: open kong.yaml  # Display the contents of the generated Kong configuration
 #       run: cat /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml
