@@ -70,6 +70,7 @@ jobs:
          for file_path in $FOLDER_PATH/*
          do
            state="$state -s $file_path "
+         done  
          deck sync $state --kong-addr http://34.125.43.26:8001
 #     - name: Deploy to Kong  # Sync the Kong configuration to Kong API Gateway
 #       run: deck sync -s kong.yaml  --kong-addr http://34.125.43.26:8001
