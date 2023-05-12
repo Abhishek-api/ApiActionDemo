@@ -71,7 +71,7 @@ jobs:
          do
            state="$state -s $file_path "
          done  
-         deck sync $state --kong-addr http://34.125.43.26:8001
+         deck sync $state --kong-addr https://ec2-54-244-204-148.us-west-2.compute.amazonaws.com:8445/ --tls-skip-verify
 #     - name: Deploy to Kong  # Sync the Kong configuration to Kong API Gateway
 #       run: deck sync -s kong.yaml  --kong-addr http://34.125.43.26:8001
 # #   publish-customer-api-to-portal:  # Publish the API to the dev portal
