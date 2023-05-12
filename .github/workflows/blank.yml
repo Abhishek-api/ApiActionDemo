@@ -14,7 +14,8 @@ jobs:
           - default
           - sandbox
           - production
-
+          - qa
+          
     env:
       FOLDER_PATH: "kongspec"
     steps:
