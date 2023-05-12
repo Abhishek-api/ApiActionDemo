@@ -58,8 +58,7 @@ jobs:
         tar -xf deck.tar.gz -C /tmp 
         sudo cp /tmp/deck /usr/local/bin/
 
-# #     - name: Deck dump
-# #       run: deck dump -o a.yaml --kong-addr http://34.125.43.26:8002 
+
       
     - name: Validate the Kong configuration using deck CLI
       run: |
@@ -67,6 +66,18 @@ jobs:
           do
             deck validate -s ./$file_path
           done
+  
+  
+
+    - name: Deck dump
+      run: |
+         state=""
+         for file_path in $FOLDER_PATH/*
+         do
+           state="$state -o $file_path "
+         done  
+         deck dump $state --kong-addr http://34.125.43.26:8001 --workspace ${{ matrix.workspace }}
+  
   
 # #     - name: Convert kong declarative  # Convert the Kong configuration to version 3.x using deck CLI
 # #       run: |
