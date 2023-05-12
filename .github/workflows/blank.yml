@@ -7,7 +7,14 @@ on:
 jobs:
   OAS_To_KONG:
     runs-on: ubuntu-latest  # Use Ubuntu as the operating system for the job
-   
+    
+    strategy:
+      matrix:
+        workspace:
+          - default
+          - sandbox
+          - production
+
     env:
       FOLDER_PATH: "kongspec"
     steps:
@@ -71,7 +78,7 @@ jobs:
          do
            state="$state -s $file_path "
          done  
-         deck sync $state --kong-addr http://34.125.43.26:8001 --tls-skip-verify
+         deck sync $state --kong-addr http://34.125.43.26:8001 --workspace ${{ matrix.workspace }}
 #     - name: Deploy to Kong  # Sync the Kong configuration to Kong API Gateway
 #       run: deck sync -s kong.yaml  --kong-addr http://34.125.43.26:8001
 # #   publish-customer-api-to-portal:  # Publish the API to the dev portal
