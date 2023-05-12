@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest  # Use Ubuntu as the operating system for the job
    
     env:
-      FOLDER_PATH: "definitions"
+      FOLDER_PATH: "kongspec"
     steps:
     - name: Checkout Code  # Checkout the code from the repository
       uses: actions/checkout@v2
