@@ -8,16 +8,16 @@ jobs:
   OAS_To_KONG:
     runs-on: ubuntu-latest  # Use Ubuntu as the operating system for the job
     
-    strategy:
-      matrix:
-        workspace:
-          - default
-          - sandbox
-          - production
-          - qa
+#     strategy:
+#       matrix:
+#         workspace:
+#           - default
+#           - sandbox
+#           - production
+#           - qa
           
-    env:
-      FOLDER_PATH: "kongspec"
+#     env:
+#       FOLDER_PATH: "kongspec"
     steps:
     - name: Checkout Code  # Checkout the code from the repository
       uses: actions/checkout@v2
