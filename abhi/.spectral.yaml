@@ -16,11 +16,11 @@ rules:
     then:
       field: description
       function: truthy      
-  operation-description:
-   description: Operation "description" must be present and non-empty string.
+ operation-operationId:
+    description: Operation "description" must be present and non-empty string.
     recommended: true
     severity: error
-    given: $.paths
+    given: $.paths.*.*[?(@.operationId == null || @.operationId == '')]
     then:
       field: description
       function: truthy   
