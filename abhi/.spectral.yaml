@@ -8,7 +8,7 @@ rules:
     then:
       field: contact
       function: truthy
-  info-contact:
+  info-description:
     description: Info object must have a "contact" object.
     recommended: true
     severity: error
