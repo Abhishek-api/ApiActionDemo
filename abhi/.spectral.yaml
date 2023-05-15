@@ -24,6 +24,14 @@ rules:
     then:
       field: description
       function: truthy   
+  operation-tags:
+    description: Operation must have non-empty "tags" array.
+    recommended: true
+    severity: error
+    given: $.paths.*.*[?(@.tags === undefined)]
+    then:
+      field: tags
+      function: truthy   
 
 # rules:
 #   operation-description:
