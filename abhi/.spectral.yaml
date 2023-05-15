@@ -9,7 +9,7 @@ rules:
       field: contact
       function: truthy
   info-description:
-    description: Info object must have a "contact" object.
+    description: Info object must have a "description" object.
     recommended: true
     severity: error
     given: $.info
