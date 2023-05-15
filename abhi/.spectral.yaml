@@ -15,8 +15,9 @@ rules:
     description: Info object must have a "contact" object.
     recommended: true
     severity: error
-    given: $["info"]["contact"]
+    given: $.info
     then:
+      field: contact
       function: truthy
 # rules:
 #   operation-description:
