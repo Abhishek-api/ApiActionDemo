@@ -1,11 +1,23 @@
+# extends: spectral:oas
+# rules:
+#   tag-description:
+#     description: Please provide a description for each tag.
+#     documentationUrl: https://www.example.com/docs/tag-description.md
+#     recommended: true
+#     severity: error
+#     given: $.tags[*]
+#     then:
+#       field: description
+#       function: truthy
 extends: spectral:oas
 rules:
-  tag-description:
-    description: Please provide a description for each tag.
-    documentationUrl: https://www.example.com/docs/tag-description.md
-    recommended: true
+  info-contact:
     severity: error
-    given: $.tags[*]
-    then:
-      field: description
-      function: truthy
+  info-description:
+    severity: error
+  operation-description:
+    severity: error
+  operation-operationId:
+    severity: error
+  operation-tags:
+    severity: error
