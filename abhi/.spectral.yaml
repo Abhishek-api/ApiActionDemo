@@ -8,6 +8,14 @@ rules:
     then:
       field: contact
       function: truthy
+  info-contact:
+    description: Info object must have a "contact" object.
+    recommended: true
+    severity: error
+    given: $.info
+    then:
+      field: description
+      function: truthy      
   tag-description:
     description: Please provide a description for each tag.
     documentationUrl: https://www.example.com/docs/tag-description.md
