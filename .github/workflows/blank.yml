@@ -34,14 +34,17 @@ jobs:
 #       run:  npm install -g insomnia
       
     - name: Lint OpenAPI Spec
-      run: ./inso lint spec pipe1.yml
+      run: ./inso lint spec ./abhi/*.yaml
            
       
 #     - name: Test the Inso OpenApSpec
 #       run: ./inso run test "ApiActionDemo"
       
     - name: Generate Kong configuration in declarative format
-      run: ./inso generate config pipe1.yml --type declarative -o kong.yaml --kongVersion 3
+      run: |
+         for file_path in $FOLDER_PATH/*
+         do
+           ./inso generate config $file_path --type declarative -o $file_path --kongVersion 3
          done
 #     - name: open kong.yaml  # Display the contents of the generated Kong configuration
 #       run: cat ./$file_path
