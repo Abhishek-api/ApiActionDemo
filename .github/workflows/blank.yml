@@ -27,11 +27,11 @@ jobs:
         wget https://github.com/Kong/insomnia/releases/download/lib%403.14.0-beta.1/inso-linux-3.14.0-beta.1.tar.xz
         tar -xf inso-linux-3.14.0-beta.1.tar.xz
         
-    - name: Installing NodeJs
-      uses: actions/setup-node@v1
+#     - name: Installing NodeJs
+#       uses: actions/setup-node@v1
       
-    - name: Installing inso
-      run:  npm install -g insomnia
+#     - name: Installing inso
+#       run:  npm install -g insomnia
       
     - name: Lint OpenAPI Spec
       run: ./inso lint spec ./abhi/*.yaml
