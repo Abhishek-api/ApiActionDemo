@@ -16,15 +16,14 @@ rules:
     then:
       field: description
       function: truthy      
-  tag-description:
-    description: Please provide a description for each tag.
-    documentationUrl: https://www.example.com/docs/tag-description.md
+  operation-description:
+   description: Operation "description" must be present and non-empty string.
     recommended: true
     severity: error
     given: $.operation
     then:
-      field: operationId
-      function: truthy
+      field: description
+      function: truthy   
 
 # rules:
 #   operation-description:
