@@ -11,9 +11,17 @@
 #       function: truthy
 extends: spectral:oas
 rules:
-  operation-description:
-    description: Operation "description" must be present and non-empty string.
+  info-contact:
+    description: Info object must have a "contact" object.
+    recommended: true
     severity: error
-    given: $..paths.*.*.description
+    given: $["info"]["contact"]
     then:
       function: truthy
+# rules:
+#   operation-description:
+#     description: Operation "description" must be present and non-empty string.
+#     severity: error
+#     given: $..paths.*.*.description
+#     then:
+#       function: truthy
