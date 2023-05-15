@@ -13,9 +13,9 @@ rules:
     documentationUrl: https://www.example.com/docs/tag-description.md
     recommended: true
     severity: error
-    given: $.tags[*]
+    given: $.operation
     then:
-      field: description
+      field: operationId
       function: truthy
 
 # rules:
