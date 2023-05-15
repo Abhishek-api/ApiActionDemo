@@ -22,6 +22,9 @@ jobs:
     - name: Checkout Code  # Checkout the code from the repository
       uses: actions/checkout@v2
 
+    - name: Setup - gcloud / gsutil
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+   
     - name: Install Insomnia CLI  # Install Insomnia CLI for linting and generating Kong configuration
       run: |
         wget https://github.com/Kong/insomnia/releases/download/lib%403.14.0-beta.1/inso-linux-3.14.0-beta.1.tar.xz
