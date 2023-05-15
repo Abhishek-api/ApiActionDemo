@@ -20,7 +20,7 @@ rules:
    description: Operation "description" must be present and non-empty string.
     recommended: true
     severity: error
-    given: $.- paths
+    given: $.paths
     then:
       field: description
       function: truthy   
