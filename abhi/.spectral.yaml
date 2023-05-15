@@ -1,23 +1,23 @@
-# extends: spectral:oas
-# rules:
-#   tag-description:
-#     description: Please provide a description for each tag.
-#     documentationUrl: https://www.example.com/docs/tag-description.md
-#     recommended: true
-#     severity: error
-#     given: $.tags[*]
-#     then:
-#       field: description
-#       function: truthy
 extends: spectral:oas
 rules:
   info-contact:
     description: Info object must have a "contact" object.
     recommended: true
     severity: error
-    given: $.info.contact
+    given: $.info
     then:
+      field: contact
       function: truthy
+  tag-description:
+    description: Please provide a description for each tag.
+    documentationUrl: https://www.example.com/docs/tag-description.md
+    recommended: true
+    severity: error
+    given: $.tags[*]
+    then:
+      field: description
+      function: truthy
+
 # rules:
 #   operation-description:
 #     description: Operation "description" must be present and non-empty string.
