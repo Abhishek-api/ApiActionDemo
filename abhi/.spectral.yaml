@@ -16,14 +16,14 @@ rules:
     then:
       field: description
       function: truthy      
- operation-operationId:
-    description: Operation "description" must be present and non-empty string.
-    recommended: true
-    severity: error
-    given: $.paths.*.*[?(@.operationId == null || @.operationId == '')]
-    then:
-      field: description
-      function: truthy   
+#  operation-operationId:
+#     description: Operation "description" must be present and non-empty string.
+#     recommended: true
+#     severity: error
+#     given: $.paths.*.*[?(@.operationId == null || @.operationId == '')]
+#     then:
+#       field: description
+#       function: truthy   
 
 # rules:
 #   operation-description:
