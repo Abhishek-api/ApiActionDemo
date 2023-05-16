@@ -61,7 +61,10 @@ jobs:
       with:
         name: kong-yaml
         path: abhi/a.yaml
-        
+     
+     
+    - name: Checkout Code  # Checkout the code from the repository
+      uses: actions/checkout@v2
     - name: Pushes test file
       uses: Abhishek-api/ApiActionDemo@main
       env:
