@@ -55,12 +55,12 @@ jobs:
         sudo cp /tmp/deck /usr/local/bin/
 
     - name: Deck dump
-      run: deck dump -o abhi.yaml --kong-addr http://34.125.43.26:8001
+      run: deck dump -o /home/runner/work/ApiActionDemo/ApiActionDemo/abhi/abhi.yaml --kong-addr http://34.125.43.26:8001
       
     - name: open abhi.yaml
       run: |
-         cat /home/runner/work/ApiActionDemo/ApiActionDemo/abhi.yaml
-         ls /home/runner/work/ApiActionDemo/ApiActionDemo
+         cat /home/runner/work/ApiActionDemo/ApiActionDemo/abhi/abhi.yaml
+#          ls /home/runner/work/ApiActionDemo/ApiActionDemo
 #     - name: Upload Kong YAML
 #       uses: actions/upload-artifact@v2
 #       with:
@@ -82,10 +82,10 @@ jobs:
 #         user_name: 'Abhishek-api'
 #         commit_message: 'A custom message for the commit'
         
-    - name: Move Kong YAML File
-      run: |
-       mkdir -p aman/a1 && cp -R  /home/runner/work/ApiActionDemo/ApiActionDemo/abhi/abhi.yaml aman/a1
-       ls /home/runner/work/ApiActionDemo/ApiActionDemo/abhi
+#     - name: Move Kong YAML File
+#       run: |
+#        mkdir -p aman/a1 && cp -R  /home/runner/work/ApiActionDemo/ApiActionDemo/abhi/abhi.yaml aman/a1
+#        ls /home/runner/work/ApiActionDemo/ApiActionDemo/abhi
 #     - name: Commit and Push Changes
 #       run: |
 #        git config --local user.email "action@github.com"
