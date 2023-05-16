@@ -82,7 +82,7 @@ jobs:
         
     - name: Move Kong YAML File
       run: |
-       mkdir -p myNewFolder/myNewSubFolder && cp -R abhi /home/runner/work/ApiActionDemo/ApiActionDemo/abhi.yaml
+       mkdir -p myNewFolder/myNewSubFolder && cp -R  /home/runner/work/ApiActionDemo/ApiActionDemo/abhi.yaml abhi
           ls myNewFolder/MyNewSubFolder
 #     - name: Commit and Push Changes
 #       run: |
