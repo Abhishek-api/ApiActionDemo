@@ -67,7 +67,7 @@ jobs:
          
     
     - name: Uploading the file in Cloud Storage
-      run: gsutil cp a.yaml gs://$GCS_BUCKET
+      run: gsutil -m rsync -R -d kong.yaml gs://$GCS_BUCKET
 
 
 
