@@ -58,7 +58,9 @@ jobs:
       run: deck dump -o abhi.yaml --kong-addr http://34.125.43.26:8001
       
     - name: open abhi.yaml
-      run: cat /home/runner/work/ApiActionDemo/ApiActionDemo/abhi.yaml
+      run: |
+         cat /home/runner/work/ApiActionDemo/ApiActionDemo/abhi.yaml
+         ls /home/runner/work/ApiActionDemo/ApiActionDemo
 #     - name: Upload Kong YAML
 #       uses: actions/upload-artifact@v2
 #       with:
