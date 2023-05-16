@@ -42,6 +42,9 @@ jobs:
 
     - name: Deploy to Kong
       run: deck sync -s kong.yaml --kong-addr http://34.125.43.26:8001 
+     
+    - name: Integration Testing
+      run: inso run test 
       
 #     - name: Deploy to Kong  # Sync the Kong configuration to Kong API Gateway
 #       run: deck sync -s kong.yaml  --kong-addr http://34.125.43.26:8001
