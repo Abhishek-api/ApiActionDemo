@@ -62,6 +62,18 @@ jobs:
         name: kong-yaml
         path: abhi/a.yaml
         
+    - name: Pushes test file
+      uses: Abhishek-api/ApiActionDemon@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: 'a.yaml'
+        destination_repo: 'Abhishek-api/ApiActionDemo'
+        destination_folder: 'abhi'
+        user_email: 'abhishek.yadav@neosalpha.com'
+        user_name: 'Abhishek-api'
+        commit_message: 'A custom message for the commit'
+        
 #     - name: Move Kong YAML File
 #       run: |
 #         mkdir -p kong-dump
