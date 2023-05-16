@@ -55,32 +55,32 @@ jobs:
         sudo cp /tmp/deck /usr/local/bin/
 
     - name: Deck dump
-      run: deck dump -o a.yaml --kong-addr http://34.125.43.26:8001
-    - name: Upload Kong YAML
-      uses: actions/upload-artifact@v2
-      with:
-        name: kong-yaml
-        path: abhi/a.yaml
+      run: deck dump -o abhi.yaml --kong-addr http://34.125.43.26:8001
+#     - name: Upload Kong YAML
+#       uses: actions/upload-artifact@v2
+#       with:
+#         name: kong-yaml
+#         path: abhi/a.yaml
      
-     
-    - name: Checkout Code  # Checkout the code from the repository
-      uses: actions/checkout@v2
-    - name: Pushes test file
-      uses: Abhishek-api/ApiActionDemo@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source_file: 'a.yaml'
-        destination_repo: 'Abhishek-api/ApiActionDemo'
-        destination_folder: 'abhi'
-        user_email: 'abhishek.yadav@neosalpha.com'
-        user_name: 'Abhishek-api'
-        commit_message: 'A custom message for the commit'
+#      cat /home/runner/work/ApiActionDemo/ApiActionDemo/kong.yaml
+#     - name: Checkout Code  # Checkout the code from the repository
+#       uses: actions/checkout@v2
+#     - name: Pushes test file
+#       uses: Abhishek-api/ApiActionDemo@main
+#       env:
+#         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+#       with:
+#         source_file: 'a.yaml'
+#         destination_repo: 'Abhishek-api/ApiActionDemo'
+#         destination_folder: 'abhi'
+#         user_email: 'abhishek.yadav@neosalpha.com'
+#         user_name: 'Abhishek-api'
+#         commit_message: 'A custom message for the commit'
         
-#     - name: Move Kong YAML File
-#       run: |
-#         mkdir -p kong-dump
-#         cp kong.yaml kong-dump/kong.yaml
+    - name: Move Kong YAML File
+      run: |
+        mkdir -p kong-dump
+        cp abhi.yaml kong-dump/abhi.yaml
 #     - name: Commit and Push Changes
 #       run: |
 #        git config --local user.email "action@github.com"
