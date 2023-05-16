@@ -67,7 +67,7 @@ jobs:
          export_default_credentials: true
    
     - name: Uploading the file in Cloud Storage
-      run: gsutil cp a.yaml gs://kong-bucket/
+      run: gsutil cp a.yaml gs://$GCS_BUCKET
 
 
 
