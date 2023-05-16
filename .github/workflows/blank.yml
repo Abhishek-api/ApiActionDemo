@@ -60,7 +60,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: kong-yaml
-        path: kong-dump/a.yaml
+        path: abhi/a.yaml
         
 #     - name: Move Kong YAML File
 #       run: |
