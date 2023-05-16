@@ -22,9 +22,7 @@ jobs:
     - name: Checkout Code  # Checkout the code from the repository
       uses: actions/checkout@v2
 
-#     - name: Set up Google Cloud SDK
-#       uses: google-github-actions/setup-gcloud@v0.2.1
-   
+  
 #     - name: Install Insomnia CLI  # Install Insomnia CLI for linting and generating Kong configuration
 #       run: |
 #         wget https://github.com/Kong/insomnia/releases/download/lib%403.14.0-beta.1/inso-linux-3.14.0-beta.1.tar.xz
@@ -60,6 +58,20 @@ jobs:
     - name: open abhi.yaml
       run: |
          cat /home/runner/work/ApiActionDemo/ApiActionDemo/abhi/abhi.yaml
+         
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v0.2.1
+      with:
+         service_account_key: ${{ secrets.GCS_SA_KEY }}
+         project_id: ${{ secrets.GCS_PROJECT }}
+         export_default_credentials: true
+   
+    - name: Uploading the file in Cloud Storage
+      run: gsutil cp a.yaml gs://kong-bucket/
+
+
+
+
 #          ls /home/runner/work/ApiActionDemo/ApiActionDemo
 #     - name: Upload Kong YAML
 #       uses: actions/upload-artifact@v2
@@ -95,9 +107,7 @@ jobs:
 #        git push origin master
 
       
-      
-#     - name: Uploading the file in Cloud Storage
-#       run: gsutil cp a.yaml gs://kong-bucket/
+   
 
       
 #     - name: Validate the Kong configuration using deck CLI
