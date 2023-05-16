@@ -55,7 +55,7 @@ jobs:
         sudo cp /tmp/deck /usr/local/bin/
 
     - name: Deck dump
-      run: deck dump -o /home/runner/work/ApiActionDemo/ApiActionDemo/abhi.yaml --kong-addr http://34.125.43.26:8001
+      run: deck dump -o abhi.yaml --kong-addr http://34.125.43.26:8001
       
     - name: open abhi.yaml
       run: cat /home/runner/work/ApiActionDemo/ApiActionDemo/abhi.yaml
@@ -82,8 +82,8 @@ jobs:
         
     - name: Move Kong YAML File
       run: |
-        mkdir -p kong-dump
-        cp abhi.yaml kong-dump/abhi.yaml
+       mkdir -p myNewFolder/myNewSubFolder && cp -R dist myNewFolder/myNewSubFolder
+          ls myNewFolder/MyNewSubFolder
 #     - name: Commit and Push Changes
 #       run: |
 #        git config --local user.email "action@github.com"
