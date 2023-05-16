@@ -17,17 +17,21 @@ jobs:
 #           - qa
           
 #     env:
-#       FOLDER_PATH: "kongspec"
+#       FOLDER_PATH: "kongspec"   
+    env:
+      GCS_BUCKET: ${{ secrets.GCS_BUCKET }}
+
     steps:
     - name: Checkout Code  # Checkout the code from the repository
       uses: actions/checkout@v2
-    - name: Set up Google Cloud SDK
-      uses: google-github-actions/setup-gcloud@v0.2.1
-#       with:
-#          service_account_key: ${{ secrets.GCS_SA_KEY }}
-#          project_id: ${{ secrets.GCS_PROJECT }}
-#          export_default_credentials: true
-   
+#     - name: Set up Google Cloud SDK
+#       uses: google-github-actions/setup-gcloud@v0.2.1
+    - name: Setup - gcloud / gsutil
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        service_account_key: ${{ secrets.GCS_SA_KEY }}
+        project_id: ${{ secrets.GCS_PROJECT }}
+        export_default_credentials: true
   
 #     - name: Install Insomnia CLI  # Install Insomnia CLI for linting and generating Kong configuration
 #       run: |
@@ -67,7 +71,7 @@ jobs:
          
     
     - name: Uploading the file in Cloud Storage
-      run: gsutil -m rsync -R -d kong.yaml gs://$GCS_BUCKET
+      run: gsutil -m rsync -R -d /home/runner/work/ApiActionDemo/ApiActionDemo/abhi/abhi.yaml gs://$GCS_BUCKET
 
 
 
