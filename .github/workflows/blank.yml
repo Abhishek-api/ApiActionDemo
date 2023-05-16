@@ -44,7 +44,7 @@ jobs:
       run: deck sync -s kong.yaml --kong-addr https://34.125.74.21:8444 --tls-skip-verify
      
     - name: Integration Testing
-      run: ./inso run test "ApiOps.git" --env "openspec_env"  --verbose
+      run: ./inso run test
       
 #     - name: Deploy to Kong  # Sync the Kong configuration to Kong API Gateway
 #       run: deck sync -s kong.yaml  --kong-addr http://34.125.43.26:8001
