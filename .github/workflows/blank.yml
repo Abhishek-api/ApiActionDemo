@@ -83,7 +83,7 @@ jobs:
     - name: Move Kong YAML File
       run: |
        mkdir -p aman/a1 && cp -R  /home/runner/work/ApiActionDemo/ApiActionDemo/abhi.yaml aman/a1
-         
+       ls /home/runner/work/ApiActionDemo/ApiActionDemo
 #     - name: Commit and Push Changes
 #       run: |
 #        git config --local user.email "action@github.com"
