@@ -22,8 +22,8 @@ jobs:
     - name: Checkout Code  # Checkout the code from the repository
       uses: actions/checkout@v2
 
-    - name: Set up Google Cloud SDK
-      uses: google-github-actions/setup-gcloud@v0.2.1
+#     - name: Set up Google Cloud SDK
+#       uses: google-github-actions/setup-gcloud@v0.2.1
    
     - name: Install Insomnia CLI  # Install Insomnia CLI for linting and generating Kong configuration
       run: |
@@ -56,22 +56,28 @@ jobs:
 
     - name: Deck dump
       run: deck dump -o a.yaml --kong-addr http://34.125.43.26:8001
-    - name: Move Kong YAML File
-      run: |
-        mkdir -p kong-dump
-        cp kong.yaml kong-dump/kong.yaml
-    - name: Commit and Push Changes
-      run: |
-       git config --local user.email "action@github.com"
-       git config --local user.name "GitHub Action"
-       git add .
-       git commit -m "Upload kong.yaml"
-       git push origin master
+    - name: Upload Kong YAML
+      uses: actions/upload-artifact@v2
+      with:
+        name: kong-yaml
+        path: kong-dump/a.yaml
+        
+#     - name: Move Kong YAML File
+#       run: |
+#         mkdir -p kong-dump
+#         cp kong.yaml kong-dump/kong.yaml
+#     - name: Commit and Push Changes
+#       run: |
+#        git config --local user.email "action@github.com"
+#        git config --local user.name "GitHub Action"
+#        git add .
+#        git commit -m "Upload kong.yaml"
+#        git push origin master
 
       
       
-    - name: Uploading the file in Cloud Storage
-      run: gsutil cp a.yaml gs://kong-bucket/
+#     - name: Uploading the file in Cloud Storage
+#       run: gsutil cp a.yaml gs://kong-bucket/
 
       
 #     - name: Validate the Kong configuration using deck CLI
