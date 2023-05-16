@@ -63,7 +63,7 @@ jobs:
         path: abhi/a.yaml
         
     - name: Pushes test file
-      uses: Abhishek-api/ApiActionDemon@main
+      uses: Abhishek-api/ApiActionDemo@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
