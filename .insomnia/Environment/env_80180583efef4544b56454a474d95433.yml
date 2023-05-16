@@ -5,7 +5,7 @@ modified: 1684234372398
 created: 1683796000241
 name: openspec_env
 data:
-  base_url: http://34.125.99.245:8000
+  base_url: http://34.125.99.245:8000/httpbin/get
 dataPropertyOrder:
   "&":
     - base_url
