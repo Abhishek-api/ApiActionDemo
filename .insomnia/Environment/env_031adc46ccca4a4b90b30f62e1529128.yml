@@ -1,0 +1,14 @@
+_id: env_031adc46ccca4a4b90b30f62e1529128
+type: Environment
+parentId: env_e08c4660dd41a0a6f85983bdc396db7155894c57
+modified: 1684240324881
+created: 1684240300978
+name: New Environment
+data:
+  base_url: https://httpbin.org
+dataPropertyOrder:
+  "&":
+    - base_url
+color: null
+isPrivate: false
+metaSortKey: 1684240300978
