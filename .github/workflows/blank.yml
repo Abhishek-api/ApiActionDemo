@@ -82,7 +82,7 @@ jobs:
         
     - name: Move Kong YAML File
       run: |
-       mkdir -p myNewFolder/myNewSubFolder && cp -R dist myNewFolder/myNewSubFolder
+       mkdir -p myNewFolder/myNewSubFolder && cp -R abhi myNewFolder/myNewSubFolder
           ls myNewFolder/MyNewSubFolder
 #     - name: Commit and Push Changes
 #       run: |
