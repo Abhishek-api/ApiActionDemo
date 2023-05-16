@@ -82,10 +82,10 @@ jobs:
 #         user_name: 'Abhishek-api'
 #         commit_message: 'A custom message for the commit'
         
-#     - name: Move Kong YAML File
-#       run: |
-#        mkdir -p aman/a1 && cp -R  /home/runner/work/ApiActionDemo/ApiActionDemo/abhi.yaml aman/a1
-#        ls /home/runner/work/ApiActionDemo/ApiActionDemo
+    - name: Move Kong YAML File
+      run: |
+       mkdir -p abhi && cp -R  /home/runner/work/ApiActionDemo/ApiActionDemo/abhi.yaml abhi/aman/a1
+       ls /home/runner/work/ApiActionDemo/ApiActionDemo/abhi
 #     - name: Commit and Push Changes
 #       run: |
 #        git config --local user.email "action@github.com"
