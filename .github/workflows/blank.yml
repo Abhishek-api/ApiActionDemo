@@ -25,10 +25,10 @@ jobs:
 #     - name: Set up Google Cloud SDK
 #       uses: google-github-actions/setup-gcloud@v0.2.1
    
-    - name: Install Insomnia CLI  # Install Insomnia CLI for linting and generating Kong configuration
-      run: |
-        wget https://github.com/Kong/insomnia/releases/download/lib%403.14.0-beta.1/inso-linux-3.14.0-beta.1.tar.xz
-        tar -xf inso-linux-3.14.0-beta.1.tar.xz
+#     - name: Install Insomnia CLI  # Install Insomnia CLI for linting and generating Kong configuration
+#       run: |
+#         wget https://github.com/Kong/insomnia/releases/download/lib%403.14.0-beta.1/inso-linux-3.14.0-beta.1.tar.xz
+#         tar -xf inso-linux-3.14.0-beta.1.tar.xz
         
 #     - name: Installing NodeJs
 #       uses: actions/setup-node@v1
@@ -36,16 +36,16 @@ jobs:
 #     - name: Installing inso
 #       run:  npm install -g insomnia
       
-    - name: Lint OpenAPI Spec
-      run: ./inso lint spec pipe1.yml
+#     - name: Lint OpenAPI Spec
+#       run: ./inso lint spec pipe1.yml
            
       
 #     - name: Test the Inso OpenApSpec
 #       run: ./inso run test "ApiActionDemo"
       
-    - name: Generate Kong configuration in declarative format
-      run: ./inso generate config pipe1.yml --type declarative -o kong.yaml --kongVersion 3
-         done
+#     - name: Generate Kong configuration in declarative format
+#       run: ./inso generate config pipe1.yml --type declarative -o kong.yaml --kongVersion 3
+#          done
 #     - name: open kong.yaml  # Display the contents of the generated Kong configuration
 #       run: cat ./$file_path
     - name: install deck CLI  # Install deck CLI for syncing Kong configuration
@@ -55,7 +55,7 @@ jobs:
         sudo cp /tmp/deck /usr/local/bin/
 
     - name: Deck dump
-      run: deck dump -o abhi.yaml --kong-addr http://34.125.43.26:8001
+      run: deck dump -o /home/runner/work/ApiActionDemo/ApiActionDemo/abhi.yaml --kong-addr http://34.125.43.26:8001
       
     - name: open abhi.yaml
       run: cat /home/runner/work/ApiActionDemo/ApiActionDemo/abhi.yaml
