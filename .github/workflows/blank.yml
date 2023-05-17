@@ -41,7 +41,7 @@ jobs:
       
 
     - name: Deploy to Kong
-      run: deck sync -s kong.yaml --headers --kong-addr {{ secrets.KONG_ADMIN_ADDR }} --tls-skip-verify
+      run: deck sync -s kong.yaml --kong-addr ${{ secrets.KONG_ADMIN_ADDR }} --tls-skip-verify
        
     - name: Integration Testing
       run: ./inso run test "ApiOps.git" --env "openspec_env"
