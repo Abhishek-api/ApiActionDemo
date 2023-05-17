@@ -69,9 +69,9 @@ components:
       type: string 
       default: "CA"
 servers:
-  - url: http://localhost:8080
+  - url: http://mockbin.org
     description: Local server
-  - url: http://httbin.org
+  - url: http://httpbin.org
     description: httbin.org target
   - url: http://mockbintarget.apigee.net
     description: mockbintarget.apigee.net target
