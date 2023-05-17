@@ -8,7 +8,7 @@ info:
     name: vinod
 tags:
   - name: JSON
-  - name: XML
+  - name: REQUEST
 paths:
   /json:
    get:
@@ -23,7 +23,7 @@ paths:
             schema:
               $ref: "#/components/schemas/mocks"
      operationId: getJSON
-  /xml:
+  /request:
    get:
      tags:
        - XML
@@ -71,7 +71,6 @@ components:
 servers:
   - url: http://mockbin.org
     description: Local server
-  - url: https://httpbin.org
+  - url: http://httpbin.org
     description: httbin.org target
-  - url: http://mockbintarget.apigee.net
-    description: mockbintarget.apigee.net target
+  
