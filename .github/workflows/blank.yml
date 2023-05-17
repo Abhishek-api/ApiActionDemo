@@ -46,7 +46,7 @@ jobs:
     - name: Integration Testing
       run: ./inso run test "ApiOps.git" --env "openspec_env"
     - name: Run the Kong Proxy
-      run: curl -i GET http://34.125.99.245:800l/httpbin/get
+      run: curl -i GET http://34.125.99.245:8000/httpbin/get
     
 #     - name: Deploy to Kong  # Sync the Kong configuration to Kong API Gateway
 #       run: deck sync -s kong.yaml  --kong-addr http://34.125.43.26:8001
