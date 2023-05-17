@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main  # Trigger the deployment when pushing to the main branch
+      - devlop  # Trigger the deployment when pushing to the main branch
 #k
 jobs:
   OAS_To_KONG:
@@ -40,4 +40,4 @@ jobs:
       
 
     - name: Deploy to Kong
-      run: deck sync -s kong.yaml --kong-addr ${{ secrets.KONG_ADMIN_ADDR }} --tls-skip-verify
+      run: deck sync -s kong.yaml --kong-addr http://34.125.43.26:8001 --tls-skip-verify
