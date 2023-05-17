@@ -71,7 +71,7 @@ components:
 servers:
   - url: http://mockbin.org
     description: Local server
-  - url: http://httpbin.org
+  - url: https://httpbin.org
     description: httbin.org target
   - url: http://mockbintarget.apigee.net
     description: mockbintarget.apigee.net target
