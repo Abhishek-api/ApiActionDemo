@@ -41,7 +41,7 @@ jobs:
       
 
     - name: Deploy to Kong
-      run: deck sync -s kong.yaml --kong-addr http://34.125.43.26:8001 
+      run: deck sync -s kong.yaml --kong-addr http://34.125.11.60:8002
        
 #     - name: Integration Testing
 #       run: ./inso run test "ApiOps.git" --env "openspec_env"
